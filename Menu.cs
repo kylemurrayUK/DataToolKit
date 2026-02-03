@@ -18,19 +18,24 @@ namespace DataToolKitApp
 
             public static void GetUserChoice()
             {
-                string? userChoice = Console.ReadLine();
+                int validatedUserReponse;
+                bool isUserChoicevalid = false;
                 
-                if (userChoice == null)
+                do 
                 {
+                    Console.WriteLine("Input: ");
+                    string? userChoice = Console.ReadLine();
+                    var validationResponse = ValidateUserChoice(userChoice);
+                    isUserChoicevalid = validationResponse.validResponse;
+                    validatedUserReponse = validationResponse.userChoice;
+                } while (isUserChoicevalid == false);
 
-                }
 
-
-                Console.WriteLine(userChoice);
+                Console.WriteLine(validatedUserReponse);
 
             }    
 
-            public static (int userChoice, bool validResponse) ValidateUserChoice(string unvalidatedUserChoice)
+            public static (int userChoice, bool validResponse) ValidateUserChoice(string? unvalidatedUserChoice)
             {
                 int userAnswer;
                 bool isResponseValid;
