@@ -40,7 +40,7 @@ namespace DataToolKitApp
                 int userAnswer;
                 bool isResponseValid;
 
-                if (unvalidatedUserChoice == null)
+                if (unvalidatedUserChoice == "")
                 {
                     Console.WriteLine("Null is not a valid answer");
                     userAnswer = 0;
