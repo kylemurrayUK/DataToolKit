@@ -7,8 +7,7 @@ namespace DataToolKitApp
         {
             static void Main(string[] args)
             {
-                Menu.PrintMenu();
-                Menu.GetUserChoice();
+                Menu.DirectUser();
             }
 }
 }
