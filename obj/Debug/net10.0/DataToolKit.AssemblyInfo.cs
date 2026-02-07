@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataToolKit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7de53ea3c10ad6cab3238e504e99f2b391f24bd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce2c26021b138248021a6ccbb09c58a3d3bbb2df")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataToolKit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataToolKit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

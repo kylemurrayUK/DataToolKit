@@ -31,7 +31,7 @@ namespace DataToolKitApp
                 {
                     Console.WriteLine("Input: ");
                     string? userChoice = Console.ReadLine();
-                    var validationResponse = ValidateUserChoice(userChoice);
+                    var validationResponse = ValidationUtils.ValidMenuInput(userChoice, menuProgramChoices);
                     isUserChoicevalid = validationResponse.validResponse;
                     validatedUserReponse = validationResponse.userChoice;
                 } while (isUserChoicevalid == false);
@@ -41,46 +41,12 @@ namespace DataToolKitApp
 
             }    
 
-            public static (int userChoice, bool validResponse) ValidateUserChoice(string? unvalidatedUserChoice)
-            {
-                int userAnswer;
-                bool isResponseValid;
-
-                if (unvalidatedUserChoice == "")
-                {
-                    Console.WriteLine("Null is not a valid answer");
-                    userAnswer = 0;
-                    isResponseValid = false;
-                    return (userAnswer, isResponseValid);
-                }
-                else if (!int.TryParse(unvalidatedUserChoice, out userAnswer))
-                {
-                    Console.WriteLine("Must be an integer!");
-                    userAnswer = 0;
-                    isResponseValid = false;
-                    return (userAnswer, isResponseValid);
-                }
-                else if (userAnswer > menuProgramChoices.Length || userAnswer < 1)
-                {
-                    Console.WriteLine($"Must be between 1 and {menuProgramChoices.Length}!");
-                    userAnswer = 0;
-                    isResponseValid = false;
-                    return (userAnswer, isResponseValid);
-                }
-                else
-                {
-                    isResponseValid = true;
-                    return (userAnswer, isResponseValid);
-                }
-
-            }
-
             public static void RedirectUser(int userChoice)
             {
                 switch (userChoice)
                 {
                     case 1:
-                        Console.WriteLine("Calculator");
+                        Calculator.GetUserOperationChoice() ;
                         break;
                     case 2:
                         Console.WriteLine("Number Statistics");
