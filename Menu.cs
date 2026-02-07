@@ -3,24 +3,12 @@ namespace DataToolKitApp
     class Menu()
         {
             static string[] menuProgramChoices = ["Calculator", "Number Statistics", "Text Analyzer", "Exit"];
-
+            static string MainMenuUserPrompt = "What program would you like to use: ";
             public static void DirectUser()
             {
-                Menu.PrintMenu();
+                GeneralUtils.PrintChoices(menuProgramChoices, MainMenuUserPrompt);
                 Menu.RedirectUser(Menu.GetUserChoice());
             } 
-
-    
-            public static void PrintMenu()
-            {
-                Console.WriteLine("What program would you like to use:");
-                int i = 1;
-                foreach (string menuOption in menuProgramChoices)
-                    {
-                        Console.WriteLine($"{i}.) {menuOption}");
-                        i++;        
-                    }
-            }
 
             public static int GetUserChoice()
             {
