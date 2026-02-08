@@ -12,5 +12,21 @@ namespace DataToolKitApp
                     i++;        
                 }
         }
+
+        public static int ReturnValidUserChoice(string[] listOfValidChoices)
+        {
+            int validatedUserReponse;
+            bool isUserChoicevalid = false;
+            do 
+            {
+                    Console.WriteLine("Input: ");
+                    string? userChoice = Console.ReadLine();
+                    var validationResponse = ValidationUtils.ValidMenuInput(userChoice, listOfValidChoices);
+                    isUserChoicevalid = validationResponse.validResponse;
+                    validatedUserReponse = validationResponse.userChoice;
+            } while (isUserChoicevalid == false);
+
+            return validatedUserReponse;
+        }
     }    
 }

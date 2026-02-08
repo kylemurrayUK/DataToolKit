@@ -7,27 +7,10 @@ namespace DataToolKitApp
             public static void DirectUser()
             {
                 GeneralUtils.PrintChoices(menuProgramChoices, MainMenuUserPrompt);
-                Menu.RedirectUser(Menu.GetUserChoice());
+                Menu.RedirectUser(GeneralUtils.ReturnValidUserChoice(menuProgramChoices));
             } 
 
-            public static int GetUserChoice()
-            {
-                int validatedUserReponse;
-                bool isUserChoicevalid = false;
-                
-                do 
-                {
-                    Console.WriteLine("Input: ");
-                    string? userChoice = Console.ReadLine();
-                    var validationResponse = ValidationUtils.ValidMenuInput(userChoice, menuProgramChoices);
-                    isUserChoicevalid = validationResponse.validResponse;
-                    validatedUserReponse = validationResponse.userChoice;
-                } while (isUserChoicevalid == false);
 
-
-                return validatedUserReponse;
-
-            }    
 
             public static void RedirectUser(int userChoice)
             {
