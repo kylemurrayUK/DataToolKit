@@ -46,5 +46,18 @@ namespace DataToolKitApp
                 return true;
             }
         }
+
+        public static bool IsNumberDouble(string userInput)
+        {
+            if (!double.TryParse(userInput, out _))
+            {
+                Console.WriteLine("Must be a double");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

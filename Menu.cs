@@ -17,7 +17,7 @@ namespace DataToolKitApp
                 switch (userChoice)
                 {
                     case 1:
-                        Calculator.GetUserOperationChoice() ;
+                        Calculator.Run() ;
                         break;
                     case 2:
                         Console.WriteLine("Number Statistics");
