@@ -1,11 +1,4 @@
 
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Data.SqlTypes;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Xml.XPath;
-
 namespace DataToolKitApp
 {
     class Calculator
@@ -27,8 +20,15 @@ namespace DataToolKitApp
 
         private static void RedirectToCalculatorOperationWithInputs(int userOperationChoice)
         {
+            if (userOperationChoice == 5)
+            {
+                Menu.DirectUser();
+                return;
+            }
+
             (double inputOne, double inputTwo) = GetNumbersForOperation();
             
+
             switch (userOperationChoice)
             {
                 case 1:
@@ -43,9 +43,6 @@ namespace DataToolKitApp
                 case 4:
                     Calculator.Multiply(inputOne, inputTwo);
                     break;
-                case 5:
-                    Menu.DirectUser();
-                    break;
                 default:
                     Console.WriteLine("Error: Invalid input");
                     break;
@@ -55,44 +52,15 @@ namespace DataToolKitApp
 
         private static (double FirstNumber, double SecondNumber) GetNumbersForOperation()
         {
-            string? unvalidatedFirstUserInput = "";
-            string? unvalidatedSecondUserInput = "";
             double validatedFirstUserInput = 0; 
             double validatedSecondUserInput = 0;
-            bool notNull = false;
-            bool isDouble = false;
+
             
             Console.WriteLine("First Input: ");
-            do
-            {
-                unvalidatedFirstUserInput = Console.ReadLine();
-                notNull = ValidationUtils.IsInputNull(unvalidatedFirstUserInput);
-                if (!notNull)
-                {
-                    continue;
-                }
-
-                isDouble = ValidationUtils.IsNumberDouble(unvalidatedFirstUserInput);
-
-                if (!isDouble)
-                {
-                    continue;
-                }
-                
-                validatedFirstUserInput = double.Parse(unvalidatedFirstUserInput);
-            } while (!notNull || !isDouble);
+            validatedFirstUserInput = GetValidatedNumber();
 
             Console.WriteLine("Second Input: ");
-            do
-            {
-                unvalidatedSecondUserInput = Console.ReadLine();
-                notNull = ValidationUtils.IsInputNull(unvalidatedSecondUserInput);
-                isDouble = ValidationUtils.IsNumberDouble(unvalidatedSecondUserInput);
-                if (isDouble && notNull)
-                {
-                    validatedSecondUserInput = double.Parse(unvalidatedSecondUserInput);
-                }
-            } while (!notNull || !isDouble);
+            validatedSecondUserInput = GetValidatedNumber();
 
             return (validatedFirstUserInput, validatedSecondUserInput);
         }
@@ -111,7 +79,7 @@ namespace DataToolKitApp
         }
         private static void Divide(double firstInput, double secondInput)
         {
-            if (firstInput == 0 || secondInput == 0)
+            if (secondInput == 0)
             {
                 Console.WriteLine("Cannot divide by zero");
                 (double newFirstInput, double newSecondInput) = GetNumbersForOperation();
@@ -126,6 +94,36 @@ namespace DataToolKitApp
             double result = firstInput * secondInput;
             Console.WriteLine($"Answer: {result}");
             Run();
+        }
+
+        private static double GetValidatedNumber()
+        {
+            string? unvalidatedUserInput;
+            double validatedUserInput = 0;
+            bool notNull = false;
+            bool isDouble = false;
+
+            do
+            {
+                unvalidatedUserInput = Console.ReadLine();
+                notNull = ValidationUtils.DoesStringHaveValue(unvalidatedUserInput);
+                if (!notNull)
+                {
+                    continue;
+                }
+
+                isDouble = ValidationUtils.IsNumberDouble(unvalidatedUserInput);
+
+                if (!isDouble)
+                {
+                    continue;
+                }
+                validatedUserInput = double.Parse(unvalidatedUserInput);
+
+
+            } while (!notNull || !isDouble);
+
+            return validatedUserInput;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace DataToolKitApp
             int userAnswer;
             bool isResponseValid;
 
-                if (!IsInputNull(unvalidatedUserChoice))
+                if (!DoesStringHaveValue(unvalidatedUserChoice))
                 {
                     userAnswer = 0;
                     isResponseValid = false;
@@ -34,7 +34,7 @@ namespace DataToolKitApp
                 }
         }
 
-        public static bool IsInputNull(string? potentialNullValue)
+        public static bool DoesStringHaveValue(string? potentialNullValue)
         {
             if (potentialNullValue == "")
             {

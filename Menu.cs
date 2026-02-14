@@ -1,8 +1,8 @@
 namespace DataToolKitApp
 {
-    class Menu()
+    class Menu
         {
-            static string[] menuProgramChoices = ["Calculator", "Number Statistics", "Text Analyzer", "Exit"];
+            static string[] menuProgramChoices = ["Calculator","Text Analyzer", "Number Statistics", "Exit"];
             static string MainMenuUserPrompt = "What program would you like to use: ";
             public static void DirectUser()
             {
@@ -20,7 +20,7 @@ namespace DataToolKitApp
                         Calculator.Run() ;
                         break;
                     case 2:
-                        Console.WriteLine("Number Statistics");
+                        TextAnalyzer.Run();
                         break;
                     case 3:
                         Console.WriteLine("Text Analyzer");
