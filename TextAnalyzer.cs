@@ -50,7 +50,7 @@ namespace DataToolKitApp
 
             foreach (string word in splitStringArray)
             {
-                Words.Add(word);
+                Words.Add(word.ToLower());
             }
 
             return Words;
