@@ -88,12 +88,14 @@ namespace DataToolKitApp
             double result = firstInput / secondInput;
             Console.WriteLine($"Answer: {result}");
             Run();
+            return;
         }
         private static void Multiply(double firstInput, double secondInput)
         {
             double result = firstInput * secondInput;
             Console.WriteLine($"Answer: {result}");
             Run();
+            return;
         }
 
         private static double GetValidatedNumber()

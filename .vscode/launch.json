@@ -4,11 +4,11 @@
     {
       "name": "CoreCLR Debug",
       "type": "coreclr",
-      "request": "launch",
+      "request": "attach",
       "program": "${workspaceFolder}/bin/Debug/net8.0/DataToolKit.dll",
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "stopAtEntry": true
     }
   ]
-}
+}   
