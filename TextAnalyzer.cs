@@ -31,14 +31,16 @@ namespace DataToolKitApp
             string TextAnalysis = "";
             List<string> CleanedWords = PutInputInListAndClean(userInput);
             
-            int CharacterCount = CountCharacters(CleanedWords);
-            int WordCount = CountWords(CleanedWords);
-            string LongestWord = FindLongestWord(CleanedWords);
+            int characterCount = CountCharacters(CleanedWords);
+            int wordCount = CountWords(CleanedWords);
+            string longestWord = FindLongestWord(CleanedWords);
+            string mostCommondWord = FindMostCommonWord(CleanedWords);
 
             return TextAnalysis = "Text Analysis:\n" +
-                            $"Character count: {CharacterCount}\n" +
-                            $"Word count: {WordCount}\n" +
-                            $"Longest word: {LongestWord}";
+                            $"Character count: {characterCount}\n" +
+                            $"Word count: {wordCount}\n" +
+                            $"Longest word: {longestWord}" +
+                            $"Most Commond Word: {mostCommondWord}";
         }
 
         private static List<string> PutInputInListAndClean(string userInput)
@@ -50,7 +52,7 @@ namespace DataToolKitApp
 
             foreach (string word in splitStringArray)
             {
-                Words.Add(word.ToLower());
+                Words.Add(word);
             }
 
             return Words;
@@ -62,7 +64,7 @@ namespace DataToolKitApp
 
             foreach (string word in CleanedWords)
             {
-                characterCount = characterCount + word.Length;
+                characterCount += word.Length;
             }
 
             return characterCount;
@@ -87,5 +89,56 @@ namespace DataToolKitApp
 
             return LongestWord;
         }
-    }    
+        
+        private static string FindMostCommonWord(List<string> CleanedWords)
+        {
+            Dictionary<string, int> WordsDict = OrganiseWordListIntoDictionary(CleanedWords);
+
+            string mostCommondWord = FindKeyWithHighestValue(WordsDict);
+
+            return mostCommondWord;
+        }  
+
+        private static Dictionary<string, int> OrganiseWordListIntoDictionary(List<string> CleanedWords)
+        {
+            Dictionary<string, int> WordsDict = new();
+            
+            foreach (string word in CleanedWords)
+            {
+                if (WordsDict.ContainsKey(word))
+                {
+                    WordsDict[word] += 1;
+                }    
+                else
+                {
+                    WordsDict.Add(word, 1);
+                }
+            }
+
+            return WordsDict;
+        }
+
+        private static string FindKeyWithHighestValue(Dictionary<string, int> WordsDict)
+        {
+            KeyValuePair<string, int> keyWithHighestValue = new KeyValuePair<string, int>("Default", 0);
+
+            foreach (KeyValuePair<string, int> dictEntry in WordsDict)
+            {
+                if (dictEntry.Value > keyWithHighestValue.Value)
+                {
+                    keyWithHighestValue = dictEntry;
+                }
+            } 
+
+            if (keyWithHighestValue.Value == 1)
+            {
+                return "All words only occur onnce";
+            }
+            else
+            {
+                return keyWithHighestValue.Key;
+            }
+        }
+    }
+
 }
