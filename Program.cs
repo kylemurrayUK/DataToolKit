@@ -8,6 +8,7 @@ namespace DataToolKitApp
             static void Main(string[] args)
             {
                 Menu.DirectUser();
+                Console.WriteLine("Exiting...");
             }
 }
 }

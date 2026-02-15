@@ -80,12 +80,15 @@ namespace DataToolKitApp
         }
         private static void Divide(double firstInput, double secondInput)
         {
-            if (secondInput == 0)
+
+            while (secondInput == 0)
             {
-                Console.WriteLine("Cannot divide by zero");
-                (double newFirstInput, double newSecondInput) = GetNumbersForOperation();
-                Divide(newFirstInput, newSecondInput);
+                Console.WriteLine("Cannot divide by zero.\n" +
+                                  "Input a new number:");
+                secondInput = GetValidatedNumber();
             }
+
+            
             double result = firstInput / secondInput;
             Console.WriteLine($"Answer: {result}");
             return;

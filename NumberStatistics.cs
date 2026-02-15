@@ -4,7 +4,7 @@ namespace DataToolKitApp
     {
         public static void Run()
         {
-        
+            return;
         }
     }
 }

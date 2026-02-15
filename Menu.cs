@@ -8,12 +8,13 @@ namespace DataToolKitApp
             {
                 bool shouldProgramKeepGoing = true;
 
-            while (shouldProgramKeepGoing)
-            {
-                GeneralUtils.PrintChoices(menuProgramChoices, MainMenuUserPrompt);
-                shouldProgramKeepGoing = RedirectUser(GeneralUtils.ReturnValidUserChoice(menuProgramChoices));   
-            }
+                while (shouldProgramKeepGoing)
+                {
+                    GeneralUtils.PrintChoices(menuProgramChoices, MainMenuUserPrompt);
+                    shouldProgramKeepGoing = RedirectUser(GeneralUtils.ReturnValidUserChoice(menuProgramChoices));   
+                }
 
+                return;
             } 
 
 
@@ -29,11 +30,9 @@ namespace DataToolKitApp
                         TextAnalyzer.Run();
                         return GeneralUtils.ShouldProgramKeepGoing();
                     case 3:
-                        Console.WriteLine("Text Analyzer");
+                        NumberStatistics.Run();
                         return GeneralUtils.ShouldProgramKeepGoing();
                     case 4:
-                        Console.WriteLine("Exiting");
-                        Environment.Exit(0);
                         return false;
                     default:
                         Console.WriteLine("Error: Invalid input");
