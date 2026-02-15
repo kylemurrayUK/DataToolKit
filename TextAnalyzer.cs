@@ -6,6 +6,7 @@ namespace DataToolKitApp
         public static void Run()
         {
             Console.WriteLine(AnalyseText(GetUserInput()));
+            return;
         }
 
         public static string? GetUserInput()
@@ -28,19 +29,18 @@ namespace DataToolKitApp
 
         private static string AnalyseText(string userInput)
         {
-            string TextAnalysis = "";
             List<string> CleanedWords = PutInputInListAndClean(userInput);
             
-            int characterCount = CountCharacters(CleanedWords);
+            int characterCount = CountCharacters(userInput);
             int wordCount = CountWords(CleanedWords);
             string longestWord = FindLongestWord(CleanedWords);
             string mostCommondWord = FindMostCommonWord(CleanedWords);
 
-            return TextAnalysis = "Text Analysis:\n" +
-                            $"Character count: {characterCount}\n" +
-                            $"Word count: {wordCount}\n" +
-                            $"Longest word: {longestWord}" +
-                            $"Most Commond Word: {mostCommondWord}";
+            return "Text Analysis:\n" +
+                    $"Character count: {characterCount}\n" +
+                    $"Word count: {wordCount}\n" +
+                    $"Longest word: {longestWord}\n" +
+                    $"Most Commond Word: {mostCommondWord}";
         }
 
         private static List<string> PutInputInListAndClean(string userInput)
@@ -52,22 +52,15 @@ namespace DataToolKitApp
 
             foreach (string word in splitStringArray)
             {
-                Words.Add(word);
+                Words.Add(word.ToLower());
             }
 
             return Words;
         }
 
-        private static int CountCharacters(List<string> CleanedWords)
-        {
-            int characterCount = 0;
-
-            foreach (string word in CleanedWords)
-            {
-                characterCount += word.Length;
-            }
-
-            return characterCount;
+        private static int CountCharacters(string userInput)
+        {      
+            return userInput.Length;
         }
 
         private static int CountWords(List<string> CleanedWords)
@@ -120,7 +113,7 @@ namespace DataToolKitApp
 
         private static string FindKeyWithHighestValue(Dictionary<string, int> WordsDict)
         {
-            KeyValuePair<string, int> keyWithHighestValue = new KeyValuePair<string, int>("Default", 0);
+            KeyValuePair<string, int> keyWithHighestValue = new KeyValuePair<string, int>("Empty string", 0);
 
             foreach (KeyValuePair<string, int> dictEntry in WordsDict)
             {

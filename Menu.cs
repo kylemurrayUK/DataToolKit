@@ -6,32 +6,38 @@ namespace DataToolKitApp
             static string MainMenuUserPrompt = "What program would you like to use: ";
             public static void DirectUser()
             {
+                bool shouldProgramKeepGoing = true;
+
+            while (shouldProgramKeepGoing)
+            {
                 GeneralUtils.PrintChoices(menuProgramChoices, MainMenuUserPrompt);
-                Menu.RedirectUser(GeneralUtils.ReturnValidUserChoice(menuProgramChoices));
+                shouldProgramKeepGoing = RedirectUser(GeneralUtils.ReturnValidUserChoice(menuProgramChoices));   
+            }
+
             } 
 
 
 
-            public static void RedirectUser(int userChoice)
+            public static bool RedirectUser(int userChoice)
             {
                 switch (userChoice)
                 {
                     case 1:
-                        Calculator.Run() ;
-                        break;
+                        Calculator.Run();
+                        return GeneralUtils.ShouldProgramKeepGoing();
                     case 2:
                         TextAnalyzer.Run();
-                        break;
+                        return GeneralUtils.ShouldProgramKeepGoing();
                     case 3:
                         Console.WriteLine("Text Analyzer");
-                        break;
+                        return GeneralUtils.ShouldProgramKeepGoing();
                     case 4:
                         Console.WriteLine("Exiting");
                         Environment.Exit(0);
-                        break;
+                        return false;
                     default:
                         Console.WriteLine("Error: Invalid input");
-                        break;
+                        return GeneralUtils.ShouldProgramKeepGoing();
                 }
                 
             }

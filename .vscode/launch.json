@@ -4,7 +4,7 @@
     {
       "name": "CoreCLR Debug",
       "type": "coreclr",
-      "request": "attach",
+      "request": "launch",
       "program": "${workspaceFolder}/bin/Debug/net8.0/DataToolKit.dll",
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",

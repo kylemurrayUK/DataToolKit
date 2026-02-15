@@ -3,14 +3,21 @@ namespace DataToolKitApp
 {
     class Calculator
     {
-        static string[] calculatorOperationChoices = ["Add", "Subtract", "Divide", "Multiply", "Return to menu"];
+        static string[] calculatorOperationChoices = ["Add", "Subtract", "Divide", "Multiply"];
         static string calculatorOperationPromptMessage = "What operation would you like?";
+        
 
         public static void Run()
         {
+            bool shouldProgramKeepGoing = true;
+            while (shouldProgramKeepGoing)
+            {
             int userOperationChoice = GetUserOperationChoice();
-            RedirectToCalculatorOperationWithInputs(userOperationChoice);
+            RedirectToCalculatorOperationWithInputs(userOperationChoice);   
+            shouldProgramKeepGoing = GeneralUtils.ShouldSubProgramKeepGoing();
+            }
 
+            return;
         }
         public static int GetUserOperationChoice()
         {
@@ -20,11 +27,6 @@ namespace DataToolKitApp
 
         private static void RedirectToCalculatorOperationWithInputs(int userOperationChoice)
         {
-            if (userOperationChoice == 5)
-            {
-                Menu.DirectUser();
-                return;
-            }
 
             (double inputOne, double inputTwo) = GetNumbersForOperation();
             
@@ -68,14 +70,13 @@ namespace DataToolKitApp
         {
             double result = firstInput + secondInput;
             Console.WriteLine($"Answer: {result}");
-            Run();
+            return;
         }
         private static void Subract(double firstInput, double secondInput)
         {
             double result = firstInput - secondInput;
             Console.WriteLine($"Answer: {result}");
-            Run();
-
+            return;
         }
         private static void Divide(double firstInput, double secondInput)
         {
@@ -87,14 +88,12 @@ namespace DataToolKitApp
             }
             double result = firstInput / secondInput;
             Console.WriteLine($"Answer: {result}");
-            Run();
             return;
         }
         private static void Multiply(double firstInput, double secondInput)
         {
             double result = firstInput * secondInput;
             Console.WriteLine($"Answer: {result}");
-            Run();
             return;
         }
 
