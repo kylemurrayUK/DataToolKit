@@ -11,7 +11,7 @@ namespace DataToolKitApp
                 while (shouldProgramKeepGoing)
                 {
                     GeneralUtils.PrintChoices(menuProgramChoices, MainMenuUserPrompt);
-                    shouldProgramKeepGoing = RedirectUser(GeneralUtils.ReturnValidUserChoice(menuProgramChoices));   
+                    shouldProgramKeepGoing = RedirectUser(GeneralUtils.ReturnValidMenuUserChoice(menuProgramChoices));   
                 }
 
                 return;

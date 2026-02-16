@@ -59,5 +59,17 @@ namespace DataToolKitApp
                 return true;
             }
         }
+
+        public static bool CanEntriesInListBeConvertedToDouble(string[] userInput)
+        {
+            foreach (string entry in userInput)
+            {
+                if (!double.TryParse(entry, out _))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace DataToolKitApp
                 }
         }
 
-        public static int ReturnValidUserChoice(string[] listOfValidChoices)
+        public static int ReturnValidMenuUserChoice(string[] listOfValidChoices)
         {
             int validatedUserReponse;
             bool isUserChoicevalid = false;
@@ -55,7 +55,7 @@ namespace DataToolKitApp
             return doesUserWantToContinue;
         }
 
-                public static bool ShouldSubProgramKeepGoing()
+        public static bool ShouldSubProgramKeepGoing()
         {
             bool doesUserWantToContinue = true;
             bool isUserInputYN = false;
@@ -80,5 +80,24 @@ namespace DataToolKitApp
 
             return doesUserWantToContinue;
         }
+
+        public static string? GetUserNotNullStringInput()
+        {
+            string? unvalidatedUserInput;
+            string? ValidatedUserInput = "";
+            bool HasValue = false;
+
+            while (!(bool)HasValue)
+            {
+                Console.WriteLine("User Input:");
+                unvalidatedUserInput = Console.ReadLine();   
+                HasValue = ValidationUtils.DoesStringHaveValue(unvalidatedUserInput);
+                if (HasValue)
+                    ValidatedUserInput = unvalidatedUserInput;    
+            }
+
+            return ValidatedUserInput;
+        }
+
     }    
 }

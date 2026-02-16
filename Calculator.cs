@@ -22,7 +22,7 @@ namespace DataToolKitApp
         public static int GetUserOperationChoice()
         {
             GeneralUtils.PrintChoices(calculatorOperationChoices, calculatorOperationPromptMessage);
-            return GeneralUtils.ReturnValidUserChoice(calculatorOperationChoices);
+            return GeneralUtils.ReturnValidMenuUserChoice(calculatorOperationChoices);
         }
 
         private static void RedirectToCalculatorOperationWithInputs(int userOperationChoice)

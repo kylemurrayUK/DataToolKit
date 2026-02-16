@@ -5,27 +5,10 @@ namespace DataToolKitApp
 
         public static void Run()
         {
-            Console.WriteLine(AnalyseText(GetUserInput()));
+            Console.WriteLine(AnalyseText(GeneralUtils.GetUserNotNullStringInput()));
             return;
         }
 
-        public static string? GetUserInput()
-        {
-            string? unvalidatedUserInput;
-            string? ValidatedUserInput = "";
-            bool HasValue = false;
-
-            while (!(bool)HasValue)
-            {
-                Console.WriteLine("Enter string for analysis:");
-                unvalidatedUserInput = Console.ReadLine();   
-                HasValue = ValidationUtils.DoesStringHaveValue(unvalidatedUserInput);
-                if (HasValue)
-                    ValidatedUserInput = unvalidatedUserInput;    
-            }
-
-            return ValidatedUserInput;
-        }
 
         private static string AnalyseText(string userInput)
         {
