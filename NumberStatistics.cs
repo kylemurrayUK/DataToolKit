@@ -4,18 +4,24 @@ namespace DataToolKitApp
     {
         public static void Run()
         {
-            AnalyseNumbers(GetValidatedListOfNumbers());
+            Console.WriteLine(AnalyseNumbers(GetValidatedListOfNumbers()));
             return;
         }
 
         private static string AnalyseNumbers(List<double> userInput)
         {
-            foreach (double entry in userInput)
-            {
-                Console.WriteLine(entry);                
-            }
+            double minimum = FindMinimumNumber(userInput);
+            double maximum  = FindMaximumNumber(userInput);
+            double sum = FindSumOfList(userInput);
+            double average = FindAverageOfList(userInput);
+            
 
-            return "userInput";
+            return "Number Analysis:\n" +
+                   $"Minimum Number: {minimum}\n" + 
+                   $"Maximum Number: {maximum}\n" + 
+                   $"Sum of Numbers: {sum}\n" +
+                   $"Average of Numbers: {average}\n";  
+        
         }
 
         private static List<double> GetValidatedListOfNumbers()
@@ -64,6 +70,51 @@ namespace DataToolKitApp
             }
 
             return listOfNumbers;
+        }
+
+        private static double FindMinimumNumber(List<double> userInput)
+        {
+           double minimum = userInput[0];
+
+           foreach (double number in userInput)
+            {
+                if (number < minimum)
+                {
+                    minimum = number;
+                }
+            }
+
+            return minimum;
+        }
+        private static double FindMaximumNumber(List<double> userInput)
+        {
+           double maximum = userInput[0];
+
+           foreach (double number in userInput)
+            {
+                if (number > maximum)
+                {
+                    maximum = number;
+                }
+            }
+
+            return maximum;
+        }
+
+        private static double FindSumOfList(List<double> userInput)
+        {
+            double sum = 0;
+            foreach (double number in userInput)
+            {
+                sum += number;
+            }
+
+            return sum;
+        }
+
+        private static double FindAverageOfList(List<double> userInput)
+        {
+            return FindSumOfList(userInput) / userInput.Count;
         }
     }
 }
