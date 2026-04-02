@@ -19,7 +19,7 @@ Menu driven which keeps the Program.cs clean
 ## How to run:
 Currently not deployed as a standalone application - so once you have pulled the repo run dotnet build then dotnet run. Menu takes integers for commands. Hopefully error messages make any issues clear.
 
-##Project Structure:
+## Project Structure:
 ├── Program.cs          # Entry point
 ├── Menu.cs             # Main menu and routing logic
 ├── Calculator.cs       # Calculator tool
